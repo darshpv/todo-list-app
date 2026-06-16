@@ -1,0 +1,36 @@
+services:
+
+  postgres_new:
+    image: postgres:16
+    container_name: todolist_app
+
+    environment:
+      POSTGRES_USER: darsh_user
+      POSTGRES_PASSWORD: darsh_password
+      POSTGRES_DB: todolist_db
+  
+    ports:
+      - "5435:5432"
+  
+    volumes:
+      - todolist_db_data:/var/lib/postgresql/data                
+  
+    restart: unless-stopped
+
+  pgweb_new:
+    image: sosedoff/pgweb:latest
+    container_name: darsh_pgweb
+
+    depends_on:
+      - postgres_new
+
+    environment:
+      DATABASE_URL: postgres://darsh_user:darsh_password@postgres_new:5432/todolist_db?sslmode=disable
+
+    ports:
+      - "8084:8081"
+    
+    restart: unless-stopped
+
+volumes:
+  todolist_db_data:

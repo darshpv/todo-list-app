@@ -1,0 +1,45 @@
+.task-item {
+    border-bottom: 1px solid #dfdede;
+    /* border-radius: 8px; */
+    padding: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.task-info h3 {
+    margin: 6px 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 50;
+    text-align: left;
+    flex: 1;
+}
+
+.task-priority {
+    text-align: right;
+}
+
+.task-priority h3 {
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+.task-priority-select {
+    border: 1px solid #dfdede;
+    padding: 5px;
+    text-align: center;
+}
+
+.priority-high {
+    color: red;
+}
+
+.priority-medium {
+    color: orange;
+}
+
+.priority-low {
+    color: green;
+}
