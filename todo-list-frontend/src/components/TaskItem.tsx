@@ -7,10 +7,10 @@ export type TaskItemProps = {
         taskId: number,
         priority: TaskPriority
     ) => void;
+    onDelete?: (taskId: number) => void;
 };
 
-export function TaskItem({ task, onPriorityChange }: TaskItemProps) {
-
+export function TaskItem({ task, onPriorityChange, onDelete }: TaskItemProps) {
 
     const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         onPriorityChange(
@@ -19,13 +19,29 @@ export function TaskItem({ task, onPriorityChange }: TaskItemProps) {
         );
     };
 
+    const handleDelete = () => {
+        if (onDelete) {
+            onDelete(task.id);
+        }
+    };
+
     return (
         <div className="task-item">
-            <div className="task-info">
-                <h3>Title: {task.title}</h3>
-                <h3>Description: {task.description}</h3>
-                <h3>Date Added: {task.date_added.toLocaleDateString()}</h3>
-                <h3>Deadline: {task.deadline.toLocaleDateString()} at {task.deadline.toLocaleTimeString()}</h3>
+            <div className="task-item-main">
+                <div className="task-info">
+                    <h3>Title: {task.title}</h3>
+                    <h3>Description: {task.description}</h3>
+                    <h3>Date Added: {new Date(task.date_added).toLocaleDateString()}</h3>
+                    <h3>Deadline: {task.deadline}</h3>
+                </div>
+                <button
+                    type="button"
+                    className="task-delete-button"
+                    onClick={handleDelete}
+                    title="Delete task"
+                >
+                    🗑️
+                </button>
             </div>
             <div className="task-priority">
                 <h3 className={`priority-${task.priority}`}>{task.priority} priority</h3>

@@ -59,6 +59,21 @@ class TaskRepository():
             await db.rollback()
             raise e
     
+    async def delete_all_tasks(self, db: AsyncSession):
+        try:
+            result_tasks = await db.execute(
+                select(Task)
+            )
+
+            tasks = result_tasks.scalars().all()
+            for task in tasks:
+                await db.delete(task)
+            await db.commit()
+        
+        except Exception as e:
+            await db.rollback()
+            raise e
+    
     async def get_task_by_id(self, db: AsyncSession, task_id: int):
         try:
             result = await db.execute(
@@ -73,3 +88,15 @@ class TaskRepository():
             await db.rollback()
             raise e
     
+    async def get_tasks(self, db: AsyncSession):
+
+        try:
+            result = await db.execute(select(Task))
+
+            tasks = result.scalars().all()
+
+            return tasks
+        
+        except Exception as e:
+            await db.rollback()
+            raise e

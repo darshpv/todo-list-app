@@ -6,5 +6,5 @@ export type Task = {
     description: string;
     priority: TaskPriority;
     date_added: Date;
-    deadline: Date;
+    deadline: string;
 }

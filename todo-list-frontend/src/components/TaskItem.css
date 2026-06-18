@@ -1,10 +1,17 @@
 .task-item {
     border-bottom: 1px solid #dfdede;
-    /* border-radius: 8px; */
     padding: 16px;
     padding-bottom: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.task-item-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 
 .task-info h3 {
@@ -14,6 +21,20 @@
     font-weight: 50;
     text-align: left;
     flex: 1;
+}
+
+.task-delete-button {
+    border: none;
+    background: transparent;
+    color: #000000;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.task-delete-button:hover {
+    background-color: rgba(214, 225, 255, 0.692);
 }
 
 .task-priority {

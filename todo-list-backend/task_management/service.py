@@ -47,3 +47,16 @@ async def delete_task(new_db: AsyncSession, task_id: int):
         raise HTTPException(status_code=404, detail="The enetered task does not exist")
 
     await taskRepository.delete_task(db=new_db, task_id=task_id)
+
+async def delete_all_tasks(new_db: AsyncSession):
+
+    await taskRepository.delete_all_tasks(db=new_db)
+
+async def list_tasks(new_db: AsyncSession):
+
+    tasks = await taskRepository.get_tasks(db=new_db)
+
+    if tasks is None:
+        raise HTTPException(status_code=404, detail="There are no tasks to show")
+    
+    return tasks

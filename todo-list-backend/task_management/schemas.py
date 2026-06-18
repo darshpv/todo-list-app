@@ -4,7 +4,6 @@ from task_management.models import TaskPriority
 from datetime import datetime
 
 class TaskCreateRequest(BaseModel):
-    id: int
     title: str = Field(
         ...,
         min_length=5,
@@ -33,6 +32,7 @@ class TaskUpdateRequest(BaseModel):
     deadline: Optional[str] = None
 
 class TaskResponse(BaseModel):
+    id: int
     title: str
     description: str
     priority: TaskPriority

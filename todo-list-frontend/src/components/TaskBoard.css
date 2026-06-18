@@ -1,0 +1,16 @@
+
+.board-items {
+    padding: 20px;
+}
+
+.board-items-text {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 75vh;
+}
+
+.board-items-text h2 {
+    font-size: 20px;
+}
